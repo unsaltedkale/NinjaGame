@@ -172,6 +172,9 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckPoint: {fileID: 1200896474919077014}
   groundCheckRadius: 0.2
+  attackTimerMax: 0
+  attackTimer: 0
+  pro: {fileID: 8946245318229781328, guid: b26caae5b66ce475d8bf785a99542518, type: 3}
 --- !u!70 &1779346489392483852
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

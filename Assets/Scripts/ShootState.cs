@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShootState : PlayerBaseState
 {
     // Store reference to the state machine
+
     // No factory needed based on PlayerStateMachine.cs structure
 
     public ShootState(PlayerStateMachine stateMachine) : base(stateMachine) { }
@@ -17,6 +18,16 @@ public class ShootState : PlayerBaseState
     public override void Tick(float deltaTime)
     {
         // Logic during the shoot state (e.g., handle firing cooldown, check ammo)
+
+        if (stateMachine.attackTimer <= 0)
+        {
+            stateMachine.Shoot();
+
+            //reset
+
+            stateMachine.attackTimer = stateMachine.attackTimerMax;
+        }
+
 
         // Check for transitions out of the shoot state
         // Check for transitions out of the shoot state

@@ -22,6 +22,8 @@ public class CameraBehavior : MonoBehaviour
             if (player != null)
             {
                 offset = player.transform.position - transform.position;
+                offset.z = -5;
+                offset.y = 2;
                 firstTime = false;
             }
             

@@ -82,6 +82,10 @@ public class PlayerStateMachine : MonoBehaviour
     // InputReader abstraction (now a separate class)
     public InputReader InputReader { get; private set; } // Public property for states to access
 
+    public float attackTimerMax;
+    public float attackTimer;
+    public GameObject pro;
+
     private void Awake()
     {
         // Get Components
@@ -158,6 +162,13 @@ public class PlayerStateMachine : MonoBehaviour
         wasGroundedLastFrame = isGroundedNow;
 
         currentState?.Tick(Time.deltaTime);
+
+        if (GetMovementInput().x != 0)
+        {
+            transform.localScale = new Vector3(Mathf.Round(GetMovementInput().x), transform.localScale.y, transform.localScale.z);
+        }
+
+        attackTimer -= Time.deltaTime;
     }
 
     public void SwitchState(PlayerBaseState newState)
@@ -181,6 +192,19 @@ public class PlayerStateMachine : MonoBehaviour
     {
         // Delegate to the InputReader instance
         return InputReader.IsRunPressed();
+    }
+
+    public void Shoot()
+    {
+        // shoot
+            
+        // offset so doesn't hit player
+        Vector3 vector = new Vector3(transform.localScale.x, 0, 0);
+        vector = Vector3.Normalize(vector);
+        GameObject clone = Instantiate(pro, transform.position + vector*0.5f, Quaternion.identity);
+        Projectile script = clone.GetComponent<Projectile>();
+        script.direction = new Vector3(vector.x, 0, 0);
+
     }
 
     // For extensibility: get state by name

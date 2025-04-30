@@ -207,6 +207,25 @@ public class PlayerStateMachine : MonoBehaviour
 
     }
 
+    public float GetWallDirection()
+    {
+        
+        // ayo alex check the directions on this girlypop
+
+        if (transform.localScale.x < 0)
+        {
+            return 1f;
+        }
+        
+        else if (transform.localScale.x > 0)
+        {
+            return -1f;
+        }
+
+        return 0;
+
+    }
+
     // For extensibility: get state by name
     public PlayerBaseState GetState(string stateName)
     {

@@ -5,7 +5,7 @@ using Unity.Mathematics;
 public class Projectile : MonoBehaviour
 {
 
-    public float speed = 3f;
+    public float speed = 20f;
     public Vector3 direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(direction);
+        transform.Translate(direction * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D other)

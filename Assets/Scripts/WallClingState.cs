@@ -81,13 +81,13 @@ public class WallClingState : PlayerBaseState
         }
 
         // Optional: Check if player moves away from the wall
-        // Vector2 moveInput = stateMachine.GetMovementInput();
-        // float wallDirection = stateMachine.GetWallDirection(); // Need a method to determine wall side (-1 left, 1 right)
-        // if ((wallDirection < 0 && moveInput.x > 0) || (wallDirection > 0 && moveInput.x < 0))
-        // {
-        //     stateMachine.SwitchState(stateMachine.JumpState); // Detach from wall
-        //     return;
-        // }
+        Vector2 moveInput2 = stateMachine.GetMovementInput();
+        float wallDirection = stateMachine.GetWallDirection(); // Need a method to determine wall side (-1 left, 1 right)
+        if ((wallDirection < 0 && moveInput2.x > 0) || (wallDirection > 0 && moveInput2.x < 0))
+        {
+              stateMachine.SwitchState(stateMachine.JumpState); // Detach from wall
+              return;
+        }
     }
 
     public override void Exit()

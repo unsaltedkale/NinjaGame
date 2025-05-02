@@ -22,15 +22,15 @@ public class Projectile : MonoBehaviour
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
-
-        else
+    
+        else if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Coin"))
         {
             Destroy(gameObject);
         }

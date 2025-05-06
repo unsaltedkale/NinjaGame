@@ -56,6 +56,13 @@ public class SlideState : PlayerBaseState
             return; // Exit early
         }
 
+        if (stateMachine.InputReader.IsJumpPressed()) // Use InputReader property
+        {
+            stateMachine.SwitchState(stateMachine.JumpState);
+            return; // Exit early
+        }
+
+
         float timeSinceSlideStarted = Time.time - slideStartTime;
 
         // Apply sliding physics (e.g., decreasing velocity over time)

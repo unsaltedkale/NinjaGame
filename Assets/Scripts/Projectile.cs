@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         }
     
-        else if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Coin"))
+        else if (other.gameObject.CompareTag("Solid"))
         {
             Destroy(gameObject);
         }

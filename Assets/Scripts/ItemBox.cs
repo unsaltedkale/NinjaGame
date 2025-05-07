@@ -39,8 +39,7 @@ public class ItemBox : MonoBehaviour
         Vector3 vector = new Vector3(0, 1, 0);
 
         GameObject clone = Instantiate(gobgob, transform.position + vector, Quaternion.identity);
-        //Projectile script = clone.GetComponent<Projectile>();
-        //script.direction = new Vector3(vector.x, 0, 0);
+        
     }
 
 }

@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     public GameObject wp1;
     public GameObject wp2;
     public Vector3 prevPosition;
+    public GameManager gm;
 
     public enum States
     {
@@ -32,6 +33,8 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gm = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        
         prevPosition = transform.position;
 
         Vector3 vector1 = new Vector3(transform.position.x - 3, transform.position.y, transform.position.z);
@@ -133,6 +136,14 @@ public class Enemy : MonoBehaviour
         {
             PlayerInTrigger = false;
             StartCoroutine(ChasingStop());
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            gm.Respawn();
         }
     }
 

@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     public GameObject wp2;
     public Vector3 prevPosition;
     public GameManager gm;
+    public Sprite frame1;
+    public Sprite frame2;
 
     public enum States
     {
@@ -47,6 +49,8 @@ public class Enemy : MonoBehaviour
         waitTime = maxwaitTime;
 
         state = States.Patrol;
+
+        StartCoroutine(Animate());
 
         StartCoroutine(FindPlayer());
     }
@@ -107,14 +111,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public IEnumerator Animate()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.4f);
+
+            if (GetComponentInParent<SpriteRenderer>().sprite == frame1)
+            {
+                GetComponentInParent<SpriteRenderer>().sprite = frame2;
+            }
+
+            else if (GetComponentInParent<SpriteRenderer>().sprite == frame2)
+            {
+                GetComponentInParent<SpriteRenderer>().sprite = frame1;
+            }
+ 
+        }
+    }
+
     public IEnumerator FindPlayer()
     {
-        print("TRYING");
         player = GameObject.Find("Player Ninja(Clone)");
 
         if (player.CompareTag("Player") == false)
         {
-            print("RETRYING");
             yield return new WaitForSeconds(0.1f);
             StartCoroutine(FindPlayer());
         }

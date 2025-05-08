@@ -538,9 +538,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinTotal: 0
-  coinText: {fileID: 1053113910}
+  coinText: {fileID: 0}
   player: {fileID: 0}
   respawnplace: {x: 0, y: 0, z: 0}
+  coinsearching: 0
+  playersearching: 0
 --- !u!4 &1282586792
 Transform:
   m_ObjectHideFlags: 0

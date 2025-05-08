@@ -4,6 +4,7 @@ public class ItemBox : MonoBehaviour
 {
 
     public GameObject gobgob;
+    public GameObject powerup;
     public bool HasBeenHit = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,7 +39,17 @@ public class ItemBox : MonoBehaviour
     {
         Vector3 vector = new Vector3(0, 1, 0);
 
-        GameObject clone = Instantiate(gobgob, transform.position + vector, Quaternion.identity);
+        GameObject g = gobgob;
+
+        float rnum = Random.Range(0f,1f);
+        print(rnum);
+
+        if (rnum <= 0.25)
+        {
+            g = powerup;
+        }
+
+        GameObject clone = Instantiate(g, transform.position + vector, Quaternion.identity);
         
     }
 

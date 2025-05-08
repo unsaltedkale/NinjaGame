@@ -189,6 +189,9 @@ MonoBehaviour:
   wp1: {fileID: 3770789725404626157, guid: c1f6b06feda754edfa5986c3ba97124b, type: 3}
   wp2: {fileID: 3770789725404626157, guid: 9c9fab7702aca427e906c35ba2b9cd53, type: 3}
   prevPosition: {x: 0, y: 0, z: 0}
+  gm: {fileID: 0}
+  frame1: {fileID: 21300000, guid: 365fe81f2e78267438ec608e8cee9db7, type: 3}
+  frame2: {fileID: 21300000, guid: ce7c33f64745b24499ccc7cccab4021c, type: 3}
 --- !u!58 &990642735277805674
 CircleCollider2D:
   m_ObjectHideFlags: 0

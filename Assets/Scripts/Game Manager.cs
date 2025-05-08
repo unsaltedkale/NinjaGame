@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI coinText;
     public GameObject player;
     public Vector3 respawnplace;
+    public bool coinsearching = false;
+    public bool playersearching = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -26,8 +28,22 @@ public class GameManager : MonoBehaviour
             gm = this;
             DontDestroyOnLoad(this.gameObject);
         }
+        
+    }
 
-        coinText.text = "";
+    void Update()
+    {
+        if (coinText == null && coinsearching == false)
+        {
+            coinsearching = true;
+            StartCoroutine(FindcoinText());
+        }
+
+        if (player == null && playersearching == false)
+        {
+            playersearching = true;
+            StartCoroutine(FindPlayer());
+        }
     }
 
     public void coinAdd(int i)
@@ -59,7 +75,8 @@ public class GameManager : MonoBehaviour
 
         if (player.CompareTag("Player") == true)
         {
-            
+            playersearching = false;
+            yield break;
         }
 
         else if (player.CompareTag("Player") == false)
@@ -70,14 +87,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public IEnumerator FindcoinText()
+    {
+        coinText = GameObject.Find("CoinsText").GetComponent<TMPro.TextMeshProUGUI>();
+
+        if (coinText != null)
+        {
+            print("here");
+            coinsearching = false;
+            yield break;
+            print("there");
+        }
+
+        else if (coinText = null)
+        {
+            yield return new WaitForSeconds(0.1f);
+            StartCoroutine(FindcoinText());
+        }
+    }
+
     public void Respawn()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        FindPlayer();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

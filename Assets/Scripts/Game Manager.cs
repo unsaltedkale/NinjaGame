@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public Vector3 respawnplace;
     public bool coinsearching = false;
     public bool playersearching = false;
+    public bool InExitSign = false;
+    public int currentLevel;
+    public List<string> scenePaths;
+    public LevelLoader levelLoader;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -44,6 +48,28 @@ public class GameManager : MonoBehaviour
             playersearching = true;
             StartCoroutine(FindPlayer());
         }
+        
+        if (levelLoader == null)
+        {
+            levelLoader = GameObject.Find("The Level").GetComponent<LevelLoader>();
+        }
+        
+
+        if (InExitSign)
+        {
+            //exitSignText.text = "Press E to go to the next level";
+
+            if (Input.GetKeyDown(KeyCode.E) == true)
+            {
+                levelLoader.levelFileName = "Level-1-2";
+            }
+        }
+
+        else
+        {
+            //exitSignText.text = "";
+        }
+
     }
 
     public void coinAdd(int i)

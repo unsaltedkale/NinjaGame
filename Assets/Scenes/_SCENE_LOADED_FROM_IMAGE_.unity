@@ -264,8 +264,8 @@ MonoBehaviour:
     prefab: {fileID: 103682, guid: 3e707ed2970f72f4fa722591811337ed, type: 3}
   - color:
       serializedVersion: 2
-      rgba: 0
-    prefab: {fileID: 0}
+      rgba: 4294902015
+    prefab: {fileID: 6406469524330839449, guid: 6f89fdd9b7b904c99a85fc22a75999d1, type: 3}
   - color:
       serializedVersion: 2
       rgba: 0
@@ -543,6 +543,12 @@ MonoBehaviour:
   respawnplace: {x: 0, y: 0, z: 0}
   coinsearching: 0
   playersearching: 0
+  InExitSign: 0
+  currentLevel: 0
+  scenePaths:
+  - 
+  - 
+  levelLoader: {fileID: 0}
 --- !u!4 &1282586792
 Transform:
   m_ObjectHideFlags: 0
